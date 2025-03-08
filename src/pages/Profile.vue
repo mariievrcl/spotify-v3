@@ -49,7 +49,7 @@ const user = ref({
 // Fonction pour simuler la redirection vers la playlist
 const viewPlaylist = (playlist) => {
   console.log(`Rediriger vers la playlist: ${playlist.name}`);
-  if (playlist.name === "Favoris") {
+  if (playlist.name === "Mes Favoris") {
     router.push({ name: 'Playlist' }); // Redirection vers la page Playlist si "Favoris"
   } else {
     router.push({ name: 'Playlist', params: { id: playlist.id } }); // Redirection vers la page de la playlist en fonction de l'ID

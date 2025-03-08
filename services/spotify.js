@@ -73,7 +73,7 @@ async function getRecommandations() {
     if (data.artists && data.artists.items) {
       // Filtrer les artistes avec une faible popularité (< 30 sur 100)
       undergroundArtists = data.artists.items.filter(
-        (artist) => artist.popularity < 100
+        (artist) => artist.popularity < 70
       );
     }
 
