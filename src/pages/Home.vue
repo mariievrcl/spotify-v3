@@ -19,9 +19,9 @@
       <p v-else>Chargement...</p>
     </section>
 
-    <!-- Albums de Pitbull -->
+    <!-- Albums de Houdi-->
     <section class="section">
-      <h2>🔥 Albums de Pitbull</h2>
+      <h2>🔥 Albums de Houdi</h2>
       <div v-if="trendingTracks.length" class="scroll-container">
         <div v-for="track in trendingTracks" :key="track.id" class="card">
           <img :src="track.album.images[0]?.url" :alt="track.name" class="cover" />

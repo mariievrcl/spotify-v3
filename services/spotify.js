@@ -35,7 +35,7 @@ async function getNewReleases() {
 async function getArtists() {
   const token = await getAccessToken(); // Obtention du token d'accès
   const response = await fetch(
-    "https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/top-tracks",
+    "https://api.spotify.com/v1/artists/0E9vzecg75Thz2ekrGIaF6/top-tracks",
     {
       headers: { Authorization: `Bearer ${token}` }, // Ajout du token dans les en-têtes de la requête
     }
@@ -73,7 +73,7 @@ async function getRecommandations() {
     if (data.artists && data.artists.items) {
       // Filtrer les artistes avec une faible popularité (< 30 sur 100)
       undergroundArtists = data.artists.items.filter(
-        (artist) => artist.popularity < 30
+        (artist) => artist.popularity < 100
       );
     }
 
