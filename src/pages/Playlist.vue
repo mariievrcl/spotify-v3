@@ -273,7 +273,7 @@ const removeTrack = (index) => {
 
 .header-section {
   background: rgba(166, 95, 223, 0.2);
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   position: relative;
 }
 
@@ -586,7 +586,6 @@ const removeTrack = (index) => {
 
 .player-volume input[type="range"] {
   width: 100px;
-  -webkit-appearance: none;
   height: 5px;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.2);

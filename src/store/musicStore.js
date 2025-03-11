@@ -8,10 +8,10 @@ export const useMusicStore = defineStore('music', {
     albums: [],
     currentAlbum: null,
     albumTracks: [],
-    currentTrack: null,
+    currentTrack: null, // Piste actuelle
     currentArtist: null,
     artistTracks: [],
-    favorites: [] // Ajout d'une liste de favoris
+    favorites: [] // Liste des favoris
   }),
 
   actions: {
@@ -118,8 +118,14 @@ export const useMusicStore = defineStore('music', {
       if (!this.favorites.find(fav => fav.id === track.id)) {
         this.favorites.push(track); // Ajoute le morceau à la liste des favoris
       }
+    },
+
+    // Définir la piste actuelle
+    setCurrentTrack(track) {
+      this.currentTrack = track; // Met à jour la piste actuelle
     }
   }
 });
+
 
 
