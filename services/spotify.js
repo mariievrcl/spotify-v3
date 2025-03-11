@@ -160,7 +160,7 @@ async function getPopularArtists() {
     if (data.artists && data.artists.items) {
       // Filtrer les artistes avec une forte popularité (> 70 sur 100)
       popularArtists = data.artists.items.filter(
-        (artist) => artist.popularity > 70
+        (artist) => artist.popularity > 40
       );
     }
 

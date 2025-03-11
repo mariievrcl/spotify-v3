@@ -6,15 +6,6 @@
       <h1>{{ user.name }}</h1>
       <p>{{ user.bio }}</p>
     </div>
-
-    <!-- Statistiques musicales -->
-    <section class="user-stats">
-      <h2>🎧 Statistiques musicales</h2>
-      <div class="stat-card">
-        <p>📈 Nombre de morceaux écoutés : {{ user.totalTracks }}</p>
-        <p>🎵 Playlist la plus écoutée : {{ user.favoritePlaylist }}</p>
-      </div>
-    </section>
     
     <!-- Playlists créées -->
     <section class="created-playlists-section">
@@ -49,11 +40,7 @@ const user = ref({
 // Fonction pour simuler la redirection vers la playlist
 const viewPlaylist = (playlist) => {
   console.log(`Rediriger vers la playlist: ${playlist.name}`);
-  if (playlist.name === "Favoris") {
-    router.push({ name: 'LikedTracks' }); // Assurez-vous que cette route existe dans votre routeur
-  } else {
-    router.push({ name: 'Playlist', params: { id: playlist.id } });
-  }
+  router.push({ name: 'Playlist', params: { id: playlist.id } });
 };
 
 </script>
