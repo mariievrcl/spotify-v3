@@ -1,4 +1,3 @@
-
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/pages/Home.vue';
 import Search from '@/pages/Search.vue';
@@ -9,13 +8,42 @@ import Player from '@/pages/Player.vue';
 import Profile from '@/pages/Profile.vue';
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/search', component: Search },
-  { path: '/playlist/', component: Playlist },
-  { path: '/album/:id', component: Album, props : true, },
-  { path: '/artist/:id', component: Artist },
-  { path: '/player', component: Player },
-  { path: '/profile', component: Profile }
+  {
+    path: '/',
+    name: 'Home',
+    component: Home,
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search,
+  },
+  {
+    path: '/playlist',
+    name: 'Playlist',
+    component: Playlist,
+  },
+  {
+    path: '/album/:id',
+    name: 'Album',
+    component: Album,
+    props: true,  // permet de passer l'ID comme prop dans le composant
+  },
+  {
+    path: '/artist',
+    name: 'Artist',
+    component: Artist,
+  },
+  {
+    path: '/player',
+    name: 'Player',
+    component: Player,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: Profile,
+  },
 ];
 
 const router = createRouter({
