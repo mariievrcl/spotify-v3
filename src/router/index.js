@@ -11,7 +11,7 @@ const routes = [
   { path: '/', component: Home },
   { path: '/search', component: Search },
   { path: '/playlist/', component: Playlist },
-  { path: '/album/:id', component: Album },
+  { path: '/album/:id', component: Album, props : true, },
   { path: '/artist/:id', component: Artist },
   { path: '/player', component: Player },
   { path: '/profile', component: Profile }
@@ -23,4 +23,3 @@ const router = createRouter({
 });
 
 export default router;
-

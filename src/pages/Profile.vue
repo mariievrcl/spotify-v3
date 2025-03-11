@@ -49,12 +49,13 @@ const user = ref({
 // Fonction pour simuler la redirection vers la playlist
 const viewPlaylist = (playlist) => {
   console.log(`Rediriger vers la playlist: ${playlist.name}`);
-  if (playlist.name === "Mes Favoris") {
-    router.push({ name: 'Playlist' }); // Redirection vers la page Playlist si "Favoris"
+  if (playlist.name === "Favoris") {
+    router.push({ name: 'LikedTracks' }); // Assurez-vous que cette route existe dans votre routeur
   } else {
-    router.push({ name: 'Playlist', params: { id: playlist.id } }); // Redirection vers la page de la playlist en fonction de l'ID
+    router.push({ name: 'Playlist', params: { id: playlist.id } });
   }
 };
+
 </script>
 
 <style scoped>
@@ -144,4 +145,3 @@ h2 {
   margin-top: 2rem;
 }
 </style>
-  

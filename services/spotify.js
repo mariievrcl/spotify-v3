@@ -17,6 +17,26 @@ export async function getAccessToken() {
   return data.access_token; // Retourne le token d'accès
 }
 
+// Fonction de recherche sur Spotify (albums, pistes, artistes)
+export async function search(query) {
+  const token = await getAccessToken(); // Obtention du token d'accès
+
+  const url = `https://api.spotify.com/v1/search?q=remaster%2520track%3ADoxy%2520artist%3AMiles%2520Davis&type=album`;
+
+  const response = await fetch(url, {
+    headers: { Authorization: `Bearer ${token}` }, // Ajout du token dans les en-têtes de la requête
+  });
+
+  const data = await response.json(); // Conversion de la réponse en JSON
+
+  return {
+    albums: data.albums ? data.albums.items : [],
+    tracks: data.tracks ? data.tracks.items : [],
+    artists: data.artists ? data.artists.items : [],
+  };
+}
+
+
 // Fonction pour obtenir les nouvelles sorties d'albums
 async function getNewReleases() {
   const token = await getAccessToken(); // Obtention du token d'accès
@@ -149,6 +169,7 @@ async function getPopularArtists() {
 
   return popularArtists.slice(0, 10); // Retourner seulement les 10 artistes les plus populaires
 }
+
 
 // Exportation des fonctions pour les utiliser dans d'autres fichiers
 export {
