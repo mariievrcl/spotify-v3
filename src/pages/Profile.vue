@@ -18,7 +18,7 @@
     
     <!-- Playlists créées -->
     <section class="created-playlists-section">
-      <h2>🎶 Playlists créées par {{ user.name }}</h2>
+      <h2>🎶 Playlist créée par {{ user.name }}</h2>
       <div v-if="user.playlists.length > 0" class="playlists-grid">
         <div v-for="playlist in user.playlists" :key="playlist.id" class="card" @click="viewPlaylist(playlist)">
           <img :src="playlist.image" alt="Playlist Cover" class="cover" />
@@ -42,7 +42,6 @@ const user = ref({
   bio: "Musique, voyages et découvertes.",
   playlists: [
     { id: 1, name: "Favoris", image: "https://i.pinimg.com/474x/28/7a/80/287a80544bb2c1404188148213c34f93.jpg" },
-    { id: 2, name: "Chill Vibes", image: "https://i.pinimg.com/474x/7d/c9/53/7dc953aa02a401bd28facfb0bfc4e7a1.jpg" }
   ]
 });
 
