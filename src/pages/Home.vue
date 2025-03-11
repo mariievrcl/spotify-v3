@@ -40,7 +40,6 @@
           <img v-if="artist.images && artist.images.length" :src="artist.images[0].url" :alt="artist.name" class="cover rounded" />
           <div v-else class="cover-placeholder">🎤</div> <!-- Placeholder si pas d'image -->
           <p class="title"><strong>{{ artist.name }}</strong></p>
-          <router-link :to="'/artist/' + artist.id" class="album-link">Voir l'artist</router-link>
         </div>
       </div>
       <p v-else>Chargement...</p>
@@ -61,13 +60,12 @@
 
     <!-- Artistes Populaires -->
     <section class="section">
-      <h2>🚀 Artistes populaires</h2>
+      <h2>🚀 Artistes en tendance</h2>
       <div v-if="popularArtists.length" class="scroll-container">
         <div v-for="artist in popularArtists" :key="artist.id" class="card">
           <img v-if="artist.images && artist.images.length" :src="artist.images[0].url" :alt="artist.name" class="cover rounded" />
           <div v-else class="cover-placeholder">🎤</div> <!-- Placeholder si pas d'image -->
           <p class="title"><strong>{{ artist.name }}</strong></p>
-          <router-link :to="'/artist/' + artist.id" class="album-link">Voir l'artist</router-link>
         </div>
       </div>
       <p v-else>Chargement...</p>

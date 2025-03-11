@@ -5,6 +5,7 @@
       <img :src="user.profilePicture" alt="Profile Picture" class="profile-img" />
       <h1>{{ user.name }}</h1>
       <p>{{ user.bio }}</p>
+      <button @click="playMix" class="mix-button">Écouter mon mix</button>
     </div>
 
     <!-- Statistiques musicales -->
@@ -13,15 +14,43 @@
       <div class="stat-card">
         <p>📈 Nombre de morceaux écoutés : {{ user.totalTracks }}</p>
         <p>🎵 Playlist la plus écoutée : {{ user.favoritePlaylist }}</p>
+        <p>🎼 Genres favoris : {{ user.favoriteGenres.join(', ') }}</p>
       </div>
     </section>
-    
+
+    <!-- Top Artistes et Morceaux -->
+    <section class="top-music">
+      <h2>🏆 Top artistes & morceaux</h2>
+      <div class="top-lists">
+        <div>
+          <h3>🎤 Artistes</h3>
+          <ul>
+            <li v-for="artist in user.topArtists" :key="artist">{{ artist }}</li>
+          </ul>
+        </div>
+        <div>
+          <h3>🎶 Morceaux</h3>
+          <ul>
+            <li v-for="track in user.topTracks" :key="track">{{ track }}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historique d'écoute récent -->
+    <section class="recent-listens">
+      <h2>🔄 Historique récent</h2>
+      <ul>
+        <li v-for="track in user.recentTracks" :key="track">{{ track }}</li>
+      </ul>
+    </section>
+
     <!-- Playlists créées -->
     <section class="created-playlists-section">
-      <h2>🎶 Playlist créée par {{ user.name }}</h2>
+      <h2>🎶 Playlists créées par {{ user.name }}</h2>
       <div v-if="user.playlists.length > 0" class="playlists-grid">
         <div v-for="playlist in user.playlists" :key="playlist.id" class="card" @click="viewPlaylist(playlist)">
-          <img :src="playlist.image" alt="Playlist Cover" class="cover" />
+          <img :src="playlist.image" alt="Playlist Cover" class="favoris-cover" />
           <p class="title">{{ playlist.name }}</p>
         </div>
       </div>
@@ -32,27 +61,33 @@
 
 <script setup>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router'; // Ajout du hook useRouter pour la navigation
+import { useRouter } from 'vue-router';
 
-const router = useRouter(); // Initialisation du router
+const router = useRouter();
 
 const user = ref({
   name: "Marie Viricel",
   profilePicture: "https://i.pinimg.com/736x/e7/83/4b/e7834b5fa7473b9793d256433096f86a.jpg",
   bio: "Musique, voyages et découvertes.",
+  totalTracks: 5234,
+  favoritePlaylist: "Chill Vibes",
+  favoriteGenres: ["Rap", "House", "Pop"],
+  topArtists: ["Houdi", "Jorja Smith", "Arone"],
+  topTracks: ["Dalida", "Cry For Me", "Show Me Love"],
+  recentTracks: ["Feel Good - Rush Avenue", "Encore - Dakeez", "Paranoïa - MadeInParis"],
   playlists: [
-    { id: 1, name: "Favoris", image: "https://i.pinimg.com/474x/28/7a/80/287a80544bb2c1404188148213c34f93.jpg" },
+    { id: 1, name: "Favoris", image: "https://i.pinimg.com/474x/28/7a/80/287a80544bb2c1404188148213c34f93.jpg" } 
   ]
 });
 
-// Fonction pour simuler la redirection vers la playlist
+const playMix = () => {
+  console.log("Lecture du mix personnalisé...");
+  alert("Lecture de votre mix personnalisé 🎶");
+};
+
 const viewPlaylist = (playlist) => {
   console.log(`Rediriger vers la playlist: ${playlist.name}`);
-  if (playlist.name === "Favoris") {
-    router.push({ name: 'Playlist' }); // Redirection vers la page Playlist si "Favoris"
-  } else {
-    router.push({ name: 'Playlist', params: { id: playlist.id } }); // Redirection vers la page de la playlist en fonction de l'ID
-  }
+  router.push({ name: 'Playlist', params: { id: playlist.id } });
 };
 </script>
 
@@ -81,25 +116,46 @@ const viewPlaylist = (playlist) => {
   border: 3px solid #a65fdf;
 }
 
-h1 {
-  margin-top: 1rem;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-p {
+.mix-button {
+  background-color: #a65fdf;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
   font-size: 1rem;
-  color: #bbb;
-  margin-top: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s;
 }
 
-.created-playlists-section {
-  margin-top: 3rem;
+.mix-button:hover {
+  background-color: #8b4cc0;
+}
+
+.user-stats, .top-music, .recent-listens {
+  margin-top: 2rem;
 }
 
 h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+
+.top-lists {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  margin: 0.3rem 0;
+  border-radius: 5px;
 }
 
 .playlists-grid {
@@ -122,24 +178,22 @@ h2 {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.cover {
-  width: 100%;
-  height: 150px;
+.playlist-cover {
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 8px;
 }
 
-.title {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #fff;
+.favoris-cover {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.no-playlists {
-  color: #aaa;
-  font-size: 1rem;
-  text-align: center;
-  margin-top: 2rem;
+.large-card {
+  transform: scale(1.2);
 }
+
 </style>
