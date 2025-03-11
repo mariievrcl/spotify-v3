@@ -162,6 +162,14 @@ h3 {
   margin-top: 2rem;
   color: #ff5555;
 }
-</style>
 
+.album-link {
+  color: white;
+  text-decoration: none;
+}
+
+.album-link:hover {
+  text-decoration: underline; /* Ajoute un effet au survol si tu le souhaites */
+}
+</style>
 

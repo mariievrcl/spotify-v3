@@ -61,5 +61,6 @@ nav a:hover {
 :deep(router-view) {
   padding-top: 70px;
 }
+
 </style>
 

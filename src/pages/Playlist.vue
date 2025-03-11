@@ -637,4 +637,10 @@ const removeTrack = (index) => {
     justify-content: center;
   }
 }
+.header-section {
+  background: rgba(166, 95, 223, 0.2);
+  padding: 6rem 2rem; /* Augmenter la marge du haut en changeant le 3rem à 4rem ou plus selon le besoin */
+  position: relative;
+}
+
 </style>
