@@ -1,6 +1,7 @@
 <template>
     <nav>
-      <router-link to="/">Accueil</router-link>
+      <slot name="before-buttons"></slot>
+      <Button msg="Accueil" to="/"></Button>
       <router-link to="/search">Rechercher</router-link>
       <router-link to="/playlist">Playlists</router-link>
       <router-link to="/profile">Profil</router-link>
