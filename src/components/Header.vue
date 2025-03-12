@@ -1,6 +1,6 @@
 <template>
     <nav>
-      
+      <slot name="before-buttons"></slot>
       <Button msg="Accueil" to="/"></Button>
       <router-link to="/search">Rechercher</router-link>
       <router-link to="/playlist">Playlists</router-link>
@@ -9,7 +9,7 @@
   </template>
   
   <script setup>
-  
+  import Button from './Button.vue';
   </script>
   
   <style scoped>
