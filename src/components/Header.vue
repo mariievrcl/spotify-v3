@@ -2,6 +2,7 @@
     <nav>
       <slot name="before-buttons"></slot>
       <Button msg="Accueil" to="/"></Button>
+      <slot name="after-buttons"></slot>  <!-- Slot après les boutons -->
       <router-link to="/search">Rechercher</router-link>
       <router-link to="/playlist">Playlists</router-link>
       <router-link to="/profile">Profil</router-link>
